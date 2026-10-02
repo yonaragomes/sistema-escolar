@@ -4,24 +4,23 @@ import "./App.css";
 import BarraNavegacao from "./components/BarraNavegacao";
 import MensagemErro from "./components/MensagemErro";
 import PaginaInicial from "./pages/PaginaInicial";
-import PaginaListagem from "./pages/PaginaListagem";
+import PaginaListagemProfessor from "./pages/PaginaListagem";
+import PaginaListagem from "./pages/PaginaCadastroProfessor" // adicionado agora
 import PaginaCadastro from "./pages/PaginaCadastro";
-import PaginaCadastroProfessor from "./pages/PaginaCadastroProfessor";
-import PaginaListagemProfessores from "./pages/PaginaListagemProfessores";
+import PaginaCadastroProfessor from "./pages/PaginaCadastroProfessor" // adicionado agora
 import { listarAlunos, criarAluno, excluirAluno } from "./services/alunoService";
-import { listarProfessores, criarProfessor, excluirProfessor } from "./services/professorService";
-
+import { listarProfessores, criarProfessor, excluirProfessor } from "./services/professorService" // importando funções de professorService
 
 const mensagemConexao = "Não foi possível conectar à API. Você esqueceu de iniciar o json-server? Rode: npx json-server --watch db.json --port 3000";
 
 function App() {
   const [alunos, setAlunos] = useState([]);
-  const [professores, setProfessores] = useState([]);
+  const [professores, setProfessores] = useState([])
   const [erro, setErro] = useState("");
 
   useEffect(function () {
     carregarAlunos();
-    carregarProfessores();
+    carregarProfessor(); 
   }, []);
 
   async function carregarAlunos() {
@@ -34,12 +33,32 @@ function App() {
     }
   }
 
+  // função de redenrizar a lista de professores
+  async function carregarProfessor() {
+    try {
+      const dados = await listarProfessores();
+      setProfessores(dados);
+      setErro("")
+    } catch (e) {
+      setErro(mensagemConexao)
+    }
+  }
+
   async function aoSalvar(aluno) {
     try {
       await criarAluno(aluno);
       carregarAlunos();
     } catch (e) {
       setErro(mensagemConexao);
+    }
+  }
+
+  async function aoSalvar(professor) {
+    try {
+      await criarProfessor(professor)
+      carregarProfessores()
+    } catch (e) {
+      setErro(mensagemConexao)
     }
   }
 
@@ -52,35 +71,15 @@ function App() {
     }
   }
 
-  async function carregarProfessores() {
-    try {
-      const dados = await listarProfessores();
-      setProfessores(dados);
-      setErro("");
-    } catch (e) {
-      setErro(mensagemConexao);
-    }
-  }
-
-  async function aoSalvar(professor) {
-    try {
-      await criarProfessor(professor);
-      carregarProfessores();
-    } catch (e) {
-      setErro(mensagemConexao);
-    }
-  }
-
   async function aoExcluir(id) {
     try {
-      await excluirProfessor(id);
-      carregarProfessores();
+      await excluirProfessor(id)
+      carregarAlunos()
     } catch (e) {
-      setErro(mensagemConexao);
+      setErro(mensagemConexao)
     }
   }
 
-  
   return (
     <div className="App">
       <header className="cabecalho-ifrn">
@@ -90,14 +89,14 @@ function App() {
           className="logo-ifrn"
           onError={function (e) { e.target.style.display = "none"; }}
         />
-        <h1>Sistema Escolar — Cadastro de Alunos e Professores</h1>
+        <h1>Sistema Escolar — Cadastro de Alunos</h1>
       </header>
       <BarraNavegacao />
       <MensagemErro mensagem={erro} />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/alunos" element={<PaginaListagem alunos={alunos} aoExcluir={aoExcluir} />} />
-        <Route path="/professores" element={<PaginaListagemProfessores professores={professores} aoExcluir={aoExcluir} />} />
+        <Route path="/professores" element={<PaginaListagemProfessor professores={professores} aoExcluir={aoExcluir} />} />
         <Route path="/cadastraraluno" element={<PaginaCadastro aoSalvar={aoSalvar} />} />
         <Route path="/cadastrarprofessor" element={<PaginaCadastroProfessor aoSalvar={aoSalvar} />} />
       </Routes>

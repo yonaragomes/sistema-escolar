@@ -1,6 +1,6 @@
-import ListaProfessores from "../components/ListaProfesssores";
+import ListaProfessores from "../components/ListaProfessores";
 
-function PaginaListagemProfessores(props) {
+function PaginaListagem(props) {
   return (
     <div className="pagina-listagem">
       <h2>Professores cadastrados</h2>
@@ -9,4 +9,4 @@ function PaginaListagemProfessores(props) {
   );
 }
 
-export default PaginaListagemProfessores;
+export default PaginaListagem;

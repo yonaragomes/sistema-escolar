@@ -4,9 +4,9 @@ function PaginaCadastro(props) {
   return (
     <div className="pagina-cadastro">
       <h2>Cadastrar professor</h2>
-      <FormularioAluno aoSalvar={props.aoSalvar} />
+      <FormularioProfessor aoSalvar={props.aoSalvar} />
     </div>
   );
 }
 
-export default PaginaCadastroProfessor;
+export default PaginaCadastro;

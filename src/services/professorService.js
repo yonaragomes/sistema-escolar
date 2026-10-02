@@ -12,7 +12,7 @@ export async function listarProfessores() {
 
 // Método para criar um novo professor - Post
 export async function criarProfessor(professor) {
-  const resposta = await api.post("/professores", professor);
+  const resposta = await api.post("/professor", professor);
   return resposta.data;
 }
 

@@ -1,14 +1,14 @@
 import CardProfessor from "./CardProfessor";
 
-function ListaProfessores(props) {
+function ListaProfessor(props) {
   const cards = [];
 
-  for (let i = 0; i < props.professores.length; i++) {
-    const aluno = props.professores[i];
+  for (let i = 0; i < props.professor.length; i++) {
+    const professor = props.professor[i];
     cards.push(
       <CardProfessor
         key={professor.id}
-        aluno={professores}
+        aluno={professor}
         aoExcluir={props.aoExcluir}
       />
     );
