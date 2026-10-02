@@ -7,7 +7,7 @@ import PaginaInicial from "./pages/PaginaInicial";
 import PaginaListagem from "./pages/PaginaListagem";
 import PaginaCadastro from "./pages/PaginaCadastro";
 import PaginaCadastroProfessor from "./pages/PaginaCadastroProfessor";
-import PaginaListagem from "./pages/PaginaListagemProfessores";
+import PaginaListagemProfessores from "./pages/PaginaListagemProfessores";
 import { listarAlunos, criarAluno, excluirAluno } from "./services/alunoService";
 import { listarProfessores, criarProfessor, excluirProfessor } from "./services/professorService";
 
