@@ -10,13 +10,13 @@
     }
   ],
 
-  "professor": [
+  "professores": [
     {
       "nome": "Jerferson Queiroga Pereira",
       "email": "jerferson.queiroga@gmail.com",
       "cpf": "22512345687",
       "disciplina": "Programação para Internet",
-      "data_admissao": "20-01-1599",
+      "data_admissao": "2000-12-20",
       "id": 1
     }
   ]

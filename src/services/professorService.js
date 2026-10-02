@@ -12,11 +12,11 @@ export async function listarProfessores() {
 
 // Método para criar um novo professor - Post
 export async function criarProfessor(professor) {
-  const resposta = await api.post("/professor", professor);
+  const resposta = await api.post("/professores", professor);
   return resposta.data;
 }
 
 // Método para excluir um professor - Delete
 export async function excluirProfessor(id) {
-  await api.delete("/professor/" + id);
+  await api.delete("/professores/" + id);
 }

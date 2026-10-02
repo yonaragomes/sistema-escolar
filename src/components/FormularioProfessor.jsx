@@ -6,7 +6,7 @@ function FormularioProfessor(props) {
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [disciplina, setDisciplina] = useState("");
-  const [dataadmissao, setDataadmissao] = useState("");
+  const [dataAdmissao, setDataAdmissao] = useState("");
 
   function aoEnviar(e) {
     e.preventDefault();
@@ -15,14 +15,14 @@ function FormularioProfessor(props) {
       email: email,
       cpf: cpf,
       disciplina: disciplina,
-      dataadmissao: dataadmissao
+      data_admissao: dataAdmissao,
     };
-    props.aoSalvar(professores);
+    props.aoSalvar(professor);
     setNome("");
     setEmail("");
     setCpf("");
     setDisciplina("");
-    setDataadmissao("");
+    setDataAdmissao("");
   }
 
   return (
@@ -31,7 +31,7 @@ function FormularioProfessor(props) {
       <CampoTexto rotulo="Email" tipo="email" valor={email} aoAlterar={setEmail} />
       <CampoTexto rotulo="CPF" valor={cpf} aoAlterar={setCpf} />
       <CampoTexto rotulo="Disciplina" valor={disciplina} aoAlterar={setDisciplina} />
-      <CampoTexto rotulo="Data de Admissão" tipo="date" valor={dataadmissao} aoAlterar={setDataadmissao} />
+      <CampoTexto rotulo="Data de Admissão" tipo="date" valor={dataAdmissao} aoAlterar={setDataAdmissao} />
       <button type="submit">Cadastrar</button>
     </form>
   );

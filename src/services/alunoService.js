@@ -4,19 +4,19 @@ const api = axios.create({
   baseURL: "http://localhost:3000",
 });
 
-// Método para listar todos os alunos - Get
-export async function listarAlunos() {
-  const resposta = await api.get("/alunos");
+// Listar todos os professores - GET
+export async function listarProfessores() {
+  const resposta = await api.get("/professores");
   return resposta.data;
 }
 
-// Método para criar um novo aluno - Post
-export async function criarAluno(aluno) {
-  const resposta = await api.post("/alunos", aluno);
+// Criar um novo professor - POST
+export async function criarProfessor(professor) {
+  const resposta = await api.post("/professores", professor);
   return resposta.data;
 }
 
-// Método para excluir um aluno - Delete
-export async function excluirAluno(id) {
-  await api.delete("/alunos/" + id);
+// Excluir um professor - DELETE
+export async function excluirProfessor(id) {
+  await api.delete("/professores/" + id);
 }
